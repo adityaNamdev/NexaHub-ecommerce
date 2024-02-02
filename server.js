@@ -12,7 +12,6 @@ const path = require("path");
 
 
 
-//importing dotenev file
 dotenv.config();
 
 
@@ -23,11 +22,10 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "./app/build")));
 
-//connect to database
+
 connectToMongoDB();
 
 
-//routes
 app.use("/api/auth", userRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/product", productRoutes );

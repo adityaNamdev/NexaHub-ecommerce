@@ -124,10 +124,9 @@ const mongoose = require('mongoose');
 
 const productPhotoController = async (req, res) => {
   try {
-    // Check if req.params.pid is a valid ObjectId
     if (!mongoose.isValidObjectId(req.params.pid)) {
       return res.status(400).send({
-        success: false,
+        success: true,
         message: "Invalid product ID",
       });
     }
@@ -155,7 +154,7 @@ const productPhotoController = async (req, res) => {
 };
 
 
-//delete controller
+
  const deleteProductController = async (req, res) => {
   try {
     await productModel.findByIdAndDelete(req.params.pid).select("-photo");
@@ -173,7 +172,7 @@ const productPhotoController = async (req, res) => {
   }
 };
 
-//upate producta
+
 const updateProductController = async (req, res) => {
   try {
     const { title, description, price, category, brand, rating, stock, shipping } =
